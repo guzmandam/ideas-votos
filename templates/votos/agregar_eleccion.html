@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container">
+    <div class="row center">
+        <div class="col-md-6 offset-md-3" style="padding: 50px;">
+            {% if edit_choice %}
+            <h2>Editar elección 📝</h2>
+            {% else %}
+            <h2>Agregar una nueva elección 🔜</h2>
+            {% endif %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {% render_field form.choice_text class="form-control" placeholder="Nuevo contenido de la elección" %}
+                </div>
+                {% if edit_choice %}
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Actualizar</button>
+                <a class="btn btn-danger" href="{% url 'votos:delete_choice' choice.id %}" style="margin-top: 10px;" role="button" onclick="return confirm('¿Estás seguro de que quieres eliminarlo?')">Borrar</a>
+                {% else %}
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Agregar</button>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

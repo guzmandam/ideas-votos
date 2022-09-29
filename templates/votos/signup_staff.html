@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<form method="post" style="padding: 50px;">
+    <p class="h2">Registrate administrador 👨‍💻</p>
+    {% csrf_token %}
+    <div class="mb-3">
+        {% render_field userForm.username type="username" class="form-control" id="validationDefaultUsername" placeholder="Nombre de usuario" %}
+      </div>
+      <div class="mb-3">
+        {% render_field userForm.password type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" %}
+      </div>
+      <button type="submit" class="btn btn-primary btn-success">Registrarme</button>
+</form>
+{% endblock content %}

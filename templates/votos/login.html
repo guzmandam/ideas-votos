@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<form method="post" style="padding: 50px;">
+    <p class="h2">Entra para empezar a votar ✅</p>
+    {% csrf_token %}
+    <div class="mb-3">
+        {% render_field form.username type="username" class="form-control" id="validationDefaultUsername" aria-describedby="emailHelp" placeholder="Nombre de usuario" %}
+      </div>
+      <div class="mb-3">
+        {% render_field form.password type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" %}
+      </div>
+      <button type="submit" class="btn btn-primary btn-success">Entrar</button>
+</form>
+{% endblock content %}
+

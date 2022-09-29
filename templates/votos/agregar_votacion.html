@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container" style="padding: 50px;">
+    <div class="row center">
+        <div class="col-md-6 offset-md-3">
+            <h2>Crear una nueva votación 🏁</h2>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {% render_field pollForm.text placeholder="Contenido de la pregunta/votación" %}
+                    {% render_field pollForm.choice1 placeholder="Contenido de la opción 1" %}
+                    {% render_field pollForm.choice2 placeholder="Contenido de la opción 2" %}
+                </div>
+                <div style="margin-top: 10px;">
+                    <button type="submit" class="btn btn-primary">Agregar votación</button>
+                    <a class="btn btn-warning" href="{% url 'votos:list' %}" role="button">Regresar</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
