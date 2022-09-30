@@ -12,6 +12,9 @@
       <div class="mb-3">
         {% render_field userForm.password type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" %}
       </div>
+      <div class="mb-3">
+        <div id="emailHelp" class="form-text">¿Ya tienes cuenta? 😉 <a href="{% url 'votos:login' %}">Ingresa!</a></div>
+      </div>
       <button type="submit" class="btn btn-primary btn-success">Registrarme</button>
 </form>
 {% endblock content %}

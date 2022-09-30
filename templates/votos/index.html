@@ -35,7 +35,11 @@
                 <h1>💡 Donde está <mark>la oportunidad</mark>💡</h1>
                 <h3>Vota por las mejores ideas!</h3>
                 <hr>
+                {% if request.user.is_authenticated %}
                 <a class="btn btn-lg btn-warning" style="color: white;" href="{% url 'votos:list' %}" role="button">Quiero participar!</a>
+                {% else %}
+                <a class="btn btn-lg btn-warning" style="color: white;" href="{% url 'votos:signup' %}" role="button">Quiero participar!</a>
+                {% endif %}
             </div>
         </div>
     </div>
